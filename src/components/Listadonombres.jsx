@@ -16,6 +16,11 @@ const Listadonombres = () => {
 		setNombre('')
 	}
 
+	const deleteNombre = (id) => {
+		const nuevaArray = listanombres.filter( item => item.id !== id)
+		setListaNombres(nuevaArray)
+	}
+
 	return (
 		<div>
 			<h2>Aplicacion crud basica</h2>
@@ -25,7 +30,15 @@ const Listadonombres = () => {
 							<ul className='list-group'>
 								{
 									listanombres.map( item =>
-										<li key={item.id} className='list-group-item'>{item.tituloNombre}</li>
+										<li key={item.id} className='list-group-item'>
+											{item.tituloNombre}
+											<button
+												className='btn btn-danger float-right'
+												onClick={ () => {deleteNombre(item.id)}}
+											>
+												BORRAR
+											</button>
+										</li>
 
 										)
 								}
